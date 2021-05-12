@@ -2,7 +2,17 @@
     <div>
         <MyHeader />
         <MyFooter></MyFooter>
+<!--        <TopBar></TopBar>-->
         <FixedTool></FixedTool>
+        <FlashSale></FlashSale>
+        <GoodsSale></GoodsSale>
+        <MenuBanner></MenuBanner>
+        <SiteFooter></SiteFooter>
+        <SiteInfo></SiteInfo>
+        <SubChannel></SubChannel>
+        <ToolBar></ToolBar>
+        <TopHeader></TopHeader>
+        <VideoBox></VideoBox>
     </div>
 </template>
 
@@ -10,8 +20,28 @@
     import MyHeader from "@/components/MyHeader/MyHeader.vue";
     import MyFooter from "@/components/MyFooter/MyFooter.vue";
     import FixedTool from "@/components/FixedTool/FixedTool.vue";
+    import TopBar from "@/components/TopBar.vue";
+    import FlashSale from "@/components/FlashSale.vue";
+    import GoodsSale from "@/components/GoodsSale.vue";
+    import MenuBanner from "@/components/MenuBanner.vue";
+    import SiteFooter from "@/components/SiteFooter";
+    import SiteInfo from "@/components/SiteInfo.vue";
+    import SubChannel from "@/components/SubChannel";
+    import ToolBar from "@/components/ToolBar";
+    import TopHeader from "@/components/TopHeader";
+    import VideoBox from "@/components/VideoBox";
     export default{
-        components: {  MyHeader,MyFooter,FixedTool}, //Recom,
+        components: {  MyHeader,MyFooter,FixedTool,
+            FlashSale,
+            GoodsSale,
+            MenuBanner,
+            SiteFooter,
+            SiteInfo,
+            SubChannel,
+            ToolBar,
+            TopHeader,
+            VideoBox,
+        }, //Recom,
         name:"detail",
         data(){
             return{
