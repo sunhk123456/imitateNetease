@@ -39,11 +39,11 @@
             </div>
             <div class="item">
                 <div class="ftAppDownload">
-                    <h4 class="hd">扫码下载严选APP</h4>
-                    <div class="footQRcode">
-                        <img src="../../assets/img/code.png" alt="">
-                    </div>
-                    <div class="tip">下载领1000元新人礼包</div>
+                    <h4 class="hd">快立刻购买吧</h4>
+<!--                    <div class="footQRcode">-->
+<!--                        <img src="../../assets/img/code.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="tip">下载领1000元新人礼包</div>-->
                 </div>
             </div>
         </div>
@@ -68,10 +68,10 @@
                     
                 </div>
                 <p class="copyright">
-                    食品经营许可证：JY13301080111719出版物经营许可证：新出发滨字第0132号妙得ICP证号：ICP 证浙B2-20160106浙杭食药监械经营备20171029号营业执照网易公司版权所有 © 1997-2019
+                   油漆经营许可证：xxxxxxx 许可证：中北大学第0132号妙得ICP证号：ICP xxxxx xxx版权所有 © 1997-2019
                 </p>
                 <p class="police">
-                    无线电发射设备销售备案：42201919712647（浙杭）网械企备字[2019]第00119号（粤）网械平台备字（2019）第00004号单用途商业预付卡备案证：330100AAC0024
+                    无线电发射设备销售备案：xxxxxxx第00119号（粤）网械平台备字（2019）第00004号单用途商业预付卡备案证：xxxxxxxx
                 </p>
             </div>
         </div>

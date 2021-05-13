@@ -62,20 +62,20 @@
           </div>
         </div>
         <div class="itemList">
-          <div class="newProduct product " v-for="(item,index) in manufacturerList" :key='index'>
+          <div class="newProduct product " v-for="(item,index) in manufacturerList2" :key='index'>
             <div class="hd">
-              <router-link  :to="'/detail?id='+item.id" class="imgWrap">
+              <router-link  :to="{path:'detail',query:{sid:item.id}}" class="imgWrap">
                 <div style="width:100%;height:100%;">
-                  <img class="img  img-lazyload img-lazyloaded" src="https://yanxuan-item.nosdn.127.net/ef68b8e6c017ec145e14c10804337f91.png?type=webp&quality=95&thumbnail=265x265&imageView" alt="">
+                  <img class="img  img-lazyload img-lazyloaded" :src="item.img" alt="">
                 </div>
                 <div class="promBanner">
                   <div class="promTitle">
                     <div class="title">
-                      <span>新品尝鲜价</span>
+                      <span>{{item.name}}</span>
                     </div>
                     <div class="subTitle">
                       <span>
-                        14.5
+                     {{item.price}}
                         <span class="qi">起</span>
                       </span>
                     </div>
@@ -89,21 +89,21 @@
             </div>
             <div class="bd">
               <div class="prdtTags">
-                <span class="itemTag">新品尝鲜价</span>
+                <span class="itemTag">{{item.type}}</span>
               </div>
               <h4 class="name">
                 <a href="">
-                  <span>冻干卤肉饭 微波版 200克</span>
+                  <span>{{item.name}}</span>
                 </a>
               </h4>
               <p class="price">
                 <span class="retailPrice">
                   <span>￥</span>
-                  <span>14.9</span>
+                  <span>{{item.price}}</span>
                 </span>
                 <span class="counterPrice">
                   <span>￥</span>
-                  <span>14.9</span>
+                  <span>{{item.price}}</span>
                 </span>
               </p>
             </div>
@@ -121,6 +121,9 @@
 
 import MyHeader from "@/components/MyHeader/MyHeader.vue";
 import MyFooter from "@/components/MyFooter/MyFooter.vue";
+import {IMGURL} from "@/lib/base";
+import {getSwipetInfo} from '@/http/myHome'
+
 import Swiper from "swiper";
 export default {
   components: {  MyHeader, MyFooter },
@@ -128,35 +131,47 @@ export default {
   data(){
     return {
       swipetInfo:[
-        {url:'',img:'https://yanxuan.nosdn.127.net/7cdb5c3071e7db8ec16f43a96bfbe3b2.jpg?imageView&quality=95&thumbnail=1090x310'},
-        {url:'',img:'https://yanxuan.nosdn.127.net/7cdb5c3071e7db8ec16f43a96bfbe3b2.jpg?imageView&quality=95&thumbnail=1090x310'},
-        {url:'',img:'https://yanxuan.nosdn.127.net/7cdb5c3071e7db8ec16f43a96bfbe3b2.jpg?imageView&quality=95&thumbnail=1090x310'},
-        {url:'',img:'https://yanxuan.nosdn.127.net/7cdb5c3071e7db8ec16f43a96bfbe3b2.jpg?imageView&quality=95&thumbnail=1090x310'},
       ],
       manufacturerList:[
-        {id:0,name:'海外制造商',type:'新品',price:'9.9元起',img:'https://yanxuan.nosdn.127.net/74e2ea8f81004d0a60f90fc8e4649058.png?&quality=95&type=webp&imageView'},
-        {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/c097be14110f769d58245cdad73e15c3.png?&quality=95&type=webp&imageView'},
-        {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/2ef40536e86eba997dc17cab62697a44.png?&quality=95&type=webp&imageView'},
-        {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/2ef40536e86eba997dc17cab62697a44.png?&quality=95&type=webp&imageView'},
+
+      ],
+      manufacturerList2:[
       ]
     }
   },
+
   created:function(){
+    this.getInfo();
+
   },
+
   mounted() {
-    new Swiper ('.swiper-container', {
-          loop: true,        // 如果需要分页器       
-          pagination: {
-            el: '.swiper-pagination',
-          },   
-          // nextButton: '.swiper-button-next',
-          // prevButton: '.swiper-button-prev',        // 如果需要滚动条        
-    });
+ this._initSwiper();
+
 
     
   },
   methods:{
-    
+    //获取首页数据
+    getInfo(){
+      getSwipetInfo().then(res => {
+        if (res.data) {
+this.swipetInfo=res.data.swipetInfo
+this.manufacturerList=res.data.manufacturerList
+this.manufacturerList2=res.data.manufacturerList2
+        }
+      })
+    },
+    //添加轮播图
+    _initSwiper(){
+      setTimeout(() => {    new Swiper ('.swiper-container', {
+        autoplay:true,
+        loop: true,        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      });},100)
+    }
   }
 };
 </script>

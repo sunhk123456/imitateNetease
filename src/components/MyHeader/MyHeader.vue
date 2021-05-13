@@ -11,7 +11,7 @@
                 <div class="noticeList">
                   <div class="noticeListUL">
                     <div class="noticeItem">
-                      <a href="" class="noticeTxt" title="text">建行网易严选联名卡首发，申领立享三大优惠</a>
+                      <a href="" class="noticeTxt" title="text">选择好油漆用得更放心！！！</a>
                     </div>
                   </div>
                 </div>
@@ -147,7 +147,9 @@ export default {
           background-position: 0 -98px;
           height: 30px;
           width: 90px;
-          background-image: -webkit-image-set(url(../../assets/img/iconMore.png) 2x);
+          /*background-image: -webkit-image-set(url(../../assets/img/iconMore.png) 2x);*/
+          /*background-image:  -webkit-image-set(url(../../assets/image/logo1.png) 1x);*/
+          background-repeat: no-repeat;
           background-position: 0 -272px;
         }
       }

@@ -34,8 +34,8 @@
                         <div class="info">
                             <div class="intro">
                                 <div class="nameInfo">
-                                    <div class="name">男式基础休闲牛津纺长袖衬衫</div>
-                                    <div class="desc">用休闲姿态穿出品质生活</div>
+                                    <div class="name">{{name}}</div>
+                                    <div class="desc">无甲醛无添加</div>
                                 </div>
                                 <div class="comm">
                                     <div class="num">99.7%</div>
@@ -50,7 +50,7 @@
                                     <span class="label">价格</span>
                                     <div class="data">
                                         <span class="text">￥</span>
-                                        <span class="num">99.9</span>
+                                        <span class="num">{{price*number}}</span>
                                     </div>
                                 </div>
                                 <div class="field">
@@ -61,7 +61,7 @@
                                 <div class="field">
                                     <span class="label">服务</span>
                                     <div class="policyBox">
-                                        ･ 支持30天无忧退换货    ･ 48小时快速退款    ･ 满88元免邮费    ･ 网易自营品牌    
+                                        ･ 支持30天无忧退换货    ･ 48小时快速退款    ･ 满88元免邮费    ･ 立邦自营品牌
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
                                     <div class="specProp">
-                                        <span class="type">尺码</span>
+                                        <span class="type">型号</span>
                                         <div class="cont">
                                             <ul class="tabs">
                                                 <li @click="cmInit = index" class="tab  tab-con" v-for="(item,index) in cms" :key='index'>
@@ -181,13 +181,17 @@
 import MyHeader from "@/components/MyHeader/MyHeader.vue";
 // import Recom from "@/components/Recom/Recom.vue";
 import MyFooter from "@/components/MyFooter/MyFooter.vue";
-import bootPage from '@/components/BootPage/BootPage.vue'
+import bootPage from '@/components/BootPage/BootPage.vue';
+import {apiRead, apiCollection} from "@/http/api"
+
 export default{
   components: {  MyHeader,  MyFooter ,bootPage}, //Recom,
     name:"detail",
     data(){
         return{
             imgInit:0,
+            name:"儿童油漆",
+            price:"99",
             imgs:[
                 'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',
                 'https://yanxuan-item.nosdn.127.net/768dc17a5f8668d62b64a0649917e1d7.png?type=webp&imageView&thumbnail=430x430&quality=95',
@@ -242,7 +246,8 @@ export default{
         
     },
     mounted(){
-        
+        console.log(  "22222",     this.$route.query.sid)
+        this.initstaydetail();
     },
     methods:{
         // 去评论
@@ -272,6 +277,26 @@ export default{
         handleBuy(){
             this.$router.push('/order')
         }
+        ,
+        initstaydetail() {
+            apiRead(this.sid).then(res => {
+                // console.log(res);
+                let stayhome = res.data.stayhome;
+                let sbanner = stayhome.sbanner.split(/,/);
+                sbanner = sbanner.map(ele => {
+                    ele = IMGURL + ele;
+                    return ele;
+                })
+                stayhome.sbanner = sbanner;
+                this.stayhome = stayhome;
+                let recommend = res.data.recommend;
+                recommend.map(ele => {
+                    ele.sthumb = IMGURL + ele.sthumb;
+                });
+                this.recommend = recommend;
+            }).catch(() => {
+            })
+        },
     },
 }
 </script>

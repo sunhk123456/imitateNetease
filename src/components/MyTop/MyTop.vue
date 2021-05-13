@@ -32,7 +32,7 @@
                       <div class="columnList">
                         <div class="cateColumn">
                           <div class="cateItem" v-for="(itemb,indexb) in itema.list" :key='indexb'>
-                            <router-link :to="'/categoryList'">
+                            <router-link :to="itemb.url">
                               <img :src="itemb.img" class="subCate-icon" :alt="itemb.text" />
                               <span class="subCate-text">{{itemb.text}}</span>
                             </router-link>
@@ -81,125 +81,68 @@ export default {
       showNavTop:false,
       // search
       isShowInfo:true,
-      searchValue:'热卖 按摩电器',
+      searchValue:'热卖 儿童漆',
       tabNav:[
-        {text:'居家生活',url:''
+        {text:'我要产品',url:''
           ,navList:[
-            {title:'秋冬好物',list:[
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'主题床品',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'北欧原木',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'餐厨系列',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
+            {title:'明星产品',list:[
+              {text:'明星产品',url:'',img:'http://localhost:9004/img/我要产品/明星产品.png',},
+              {text:'植萃系列',url:'',img:'http://localhost:9004/img/我要产品/明星产品/植萃系列.png',},
+              {text:'立邦儿童漆',url:'',img:'http://localhost:9004/img/我要产品/明星产品/立邦儿童漆.png',},
+              {text:'立邦儿童漆水性木器漆',url:'',img:'http://localhost:9004/img/我要产品/明星产品/立邦儿童漆水性木器漆.png',},
             ]},
-            {title:'床上用品',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'家居饰品',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'家具安装',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'收纳日用',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'厨房用品',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'餐具水具',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'宠物生活',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-            ]},
+            {title:'厨卫底材',list:[
+                {text:'厨卫底材',url:'',img:'http://localhost:9004/img/我要产品/厨卫底材.jpg',},
+
+              ]},
+            {title:'内墙乳胶漆',list:[
+                {text:'内墙乳胶漆',url:'',img:'http://localhost:9004/img/我要产品/内墙乳胶漆.jpg',},
+
+              ]},
+            {title:'基础材料',list:[
+                {text:'基础材料',url:'',img:'http://localhost:9004/img/我要产品/基础材料.jpg',},
+
+              ]},
+            {title:'外墙乳胶漆',list:[
+                {text:'外墙乳胶漆',url:'',img:'http://localhost:9004/img/我要产品/外墙乳胶漆.jpg',},
+
+              ]},
+            {title:'木器漆',list:[
+                {text:'木器漆',url:'',img:'http://localhost:9004/img/我要产品/木器漆.jpg',},
+
+              ]},
+
           ]
         },
-        {text:'服饰鞋包',url:''
+        {text:'建筑涂料',url:''
           ,navList:[
-            {title:'秋冬好物',list:[
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/d0d518823ba987d6f7b38865ff4f4acc.png?&quality=95&type=webp&imageView',},
-              {text:'主题床品',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'北欧原木',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'餐厨系列',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'秋冬好物',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-            ]},
-            {title:'床上用品',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'家居饰品',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'家具安装',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'收纳日用',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'厨房用品',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'餐具水具',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              
-            ]},
-            {title:'宠物生活',list:[
-              {text:'床品件套',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'被遮盖谈',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-              {text:'床垫床褥',url:'',img:'https://yanxuan.nosdn.127.net/e48caa07a8ba179f542f428102cb7b71.png?&quality=95&type=webp&imageView',},
-            ]},
+            {title:'厨卫底材',list:[
+                {text:'厨卫底材',url:'',img:'http://localhost:9004/img/建筑涂料/厨卫底材.jpg',},
+
+              ]},
+            {title:'工业涂料',list:[
+                {text:'工业涂料',url:'',img:'http://localhost:9004/img/建筑涂料/工业涂料.jpg',},
+
+              ]},
+            {title:'装饰涂料',list:[
+                {text:'装饰涂料',url:'',img:'http://localhost:9004/img/建筑涂料/装饰涂料.jpg',},
+
+              ]},
+            {title:'辅材',list:[
+                {text:'辅材',url:'/user',img:'http://localhost:9004/img/建筑涂料/辅材.jpg',},
+
+              ]},
+
           ]
         },
-        {text:'美食酒水',url:''},
-        {text:'个护清洁',url:''},
-        {text:'母婴亲子',url:''},
-        {text:'运动旅行',url:''},
-        {text:'数码家电',url:''},
-        {text:'全球特色',url:''},
+        {text:'在线工具',url:''},
+        {text:'刷新服务',url:''},
+        {text:'建筑涂料',url:''},
+        {text:'工业涂料',url:''},
+        {text:'社会责任',url:''},
       ],
       hotSearch:[
-        '山羊绒围巾8折','回馈金卡买11得33','保温杯 限时7折','即溶咖啡 直降54'
+        '儿童漆八折','回馈金卡买11得33','企业团购 限时7折','工业涂料 直降54'
       ]
     }
   },
@@ -248,11 +191,13 @@ export default {
         // logo
         .logo{
           font-style: normal;
-          background-position: 0 -202px;
+          background-position: 0;
           height: 60px;
           width: 124px;
           display: block;
-          background-image: -webkit-image-set(url(../../assets/img/iconMore.png) 2x);
+          /*background-image: -webkit-image-set(url(../../assets/img/iconMore.png) 2x);*/
+          background-image:  -webkit-image-set(url(../../assets/image/logo1.png) 1x);
+          background-repeat: no-repeat;
         }
       }
       // cart
@@ -541,8 +486,11 @@ export default {
         z-index: 1;
         
         i{
-          background-image: -webkit-image-set(url(../../assets/img/iconMore.png) 2x);
-          background-position: 0 -272px;
+          /*background-image: -webkit-image-set(url(../../assets/img/iconMore.png) 2x);*/
+          background-image:  -webkit-image-set(url(../../assets/image/logo1.png) 1x);
+          background-repeat: no-repeat;
+
+       background-position: 0 -200px;
           height: 30px;
           width: 90px;
           display: block;
