@@ -104,7 +104,7 @@
                             </div>
 
                             <div class="btns">
-                                <a @click="handleBuy" href="javascript:;" class="button ghost">立即购买</a>
+                                <a @click="handleOrders" href="javascript:;" class="button ghost">立即购买</a>
                                 <a href="javascript:;" class="button addCart"><span class="icon icon-gouwuche"></span> 加入购物车</a>
                                 <div class="addSc">
                                     <div class="icon icon-star"></div>
@@ -183,6 +183,7 @@ import MyHeader from "@/components/MyHeader/MyHeader.vue";
 import MyFooter from "@/components/MyFooter/MyFooter.vue";
 import bootPage from '@/components/BootPage/BootPage.vue';
 import {apiRead, apiCollection} from "@/http/api"
+import {getDetail} from '@/http/detail'
 
 export default{
   components: {  MyHeader,  MyFooter ,bootPage}, //Recom,
@@ -190,66 +191,60 @@ export default{
     data(){
         return{
             imgInit:0,
-            name:"儿童油漆",
-            price:"99",
+            name:"",
+            price:"",
             imgs:[
-                'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',
-                'https://yanxuan-item.nosdn.127.net/768dc17a5f8668d62b64a0649917e1d7.png?type=webp&imageView&thumbnail=430x430&quality=95',
-                'https://yanxuan-item.nosdn.127.net/3eb818149f1eda5ed9f51b0c0ab760c9.png?type=webp&imageView&thumbnail=430x430&quality=95',
-                'https://yanxuan-item.nosdn.127.net/d60b41195a853e65a7dd0b3ac5cc0e8b.png?type=webp&imageView&thumbnail=430x430&quality=95',
-                'https://yanxuan-item.nosdn.127.net/07f63a4df938a91a32268e5340d6ef08.png?type=webp&imageView&thumbnail=430x430&quality=95'
-            ],
+           ],
             // 颜色
             colorInit:0,
             colors:[
-                {id:0,img:'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',},
-                {id:0,img:'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',},
-                {id:0,img:'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',},
-                {id:0,img:'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',},
-                {id:0,img:'https://yanxuan-item.nosdn.127.net/68527c3e88af6ae1328fdcf0d1686aff.png?type=webp&imageView&thumbnail=430x430&quality=95',},
-            ],
+               ],
             // 尺码
             cmInit:0,
             cms:[
-                {id:0,text:'S*（165/84A）'},
-                {id:1,text:'M*（170/88A）'},
-                {id:2,text:'L*（175/92A）'},
-                {id:3,text:'XL*（180/96A）'},
-                {id:4,text:'XXL*（185/100A）'},
-            ],
+              ],
             // 数量
             number:1,
             // navTab
             navTabInit:0,
             detailNavTab:[
-                '详情','评价（100）',
-            ],
+                ],
             desc:[
-                'https://yanxuan-item.nosdn.127.net/9c866dd74ed282a6516a7557aff27cad.jpg',
-                'https://yanxuan-item.nosdn.127.net/ef92646728bad4d1f402a56895b19a81.jpg'
-            ],
+                    ],
 
             comments:[
-                {text:'质量上乘',},
-                {text:'性价比高'},
-                {text:'很舒服'}
-            ],
+               ],
 
             userCommons:[
-                {name:'1****9',img:'//yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png',content:'此款秋衣秋裤穿着柔软亲肤非常舒服暖和，我家人这两年都喜欢穿，以前买的纯棉的木代尔的都不穿了，现在穿的都是这款面料的是最爱了，好评！',type:'尺码:XL 颜色:藏青保暖套装',time:'2019-10-16 07:57'},
-                {name:'1****9',img:'//yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png',content:'此款秋衣秋裤穿着柔软亲肤非常舒服暖和，我家人这两年都喜欢穿，以前买的纯棉的木代尔的都不穿了，现在穿的都是这款面料的是最爱了，好评！',type:'尺码:XL 颜色:藏青保暖套装',time:'2019-10-16 07:57'},
-            ]
+               ]
 
         }
     },
     created(){
-        
     },
     mounted(){
         console.log(  "22222",     this.$route.query.sid)
-        this.initstaydetail();
+        this.getDetail();
+
     },
     methods:{
+      //获取细节数据
+        getDetail(){
+            getDetail().then(res => {
+                if (res.data) {
+                    console.log(res)
+                    this.name=res.data.name
+                    this.price=res.data.price
+                    this.imgs=res.data.imgs
+                    this.colors=res.data.colors
+                    this.cms=res.data.cms
+                    this.detailNavTab=res.data.detailNavTab
+                    this.desc=res.data.desc
+                    this.comments=res.data.comments
+                    this.userCommons=res.data.userCommons
+                }
+            })
+        },
         // 去评论
         goComm(){
             this.navTabInit = 1;
@@ -276,27 +271,53 @@ export default{
         // 购买
         handleBuy(){
             this.$router.push('/order')
+        },
+
+        //提交订单
+        handleOrders() {
+            let token=this.$store.state.token;
+            let sid =this.$route.query.sid;
+            let query={
+                sid,price:this.price,cm:this.cms[this.cmInit],img:this.imgs[this.imgInit],num:this.number,name:this.name
+            }
+            this.$router.push({path:'Order',query:query});
+            // console.log(sid);
+            // let query={
+            //     redirect:'Details',
+            //     sid:sid
+            // };
+            // if (!token){
+            //     Toast("请登录");
+            //     this.$router.push({name:'Login',query:query});
+            // }else {
+            //
+            //     let query={
+            //         sid,price:this.price,cms:this.cms,cmsIndex:this.cmsIndex,imgs:this.imgs,imgsIndex:this.imgsIndex,num:this.number
+            //     }
+            //     this.$router.push({name:'Order',query:query});
+            // }
+
         }
         ,
-        initstaydetail() {
-            apiRead(this.sid).then(res => {
-                // console.log(res);
-                let stayhome = res.data.stayhome;
-                let sbanner = stayhome.sbanner.split(/,/);
-                sbanner = sbanner.map(ele => {
-                    ele = IMGURL + ele;
-                    return ele;
-                })
-                stayhome.sbanner = sbanner;
-                this.stayhome = stayhome;
-                let recommend = res.data.recommend;
-                recommend.map(ele => {
-                    ele.sthumb = IMGURL + ele.sthumb;
-                });
-                this.recommend = recommend;
-            }).catch(() => {
-            })
-        },
+        // initstaydetail() {
+        //     apiRead(this.sid).then(res => {
+        //         // console.log(res);
+        //         let stayhome = res.data.stayhome;
+        //         let sbanner = stayhome.sbanner.split(/,/);
+        //         sbanner = sbanner.map(ele => {
+        //             ele = IMGURL + ele;
+        //             return ele;
+        //         })
+        //         stayhome.sbanner = sbanner;
+        //         this.stayhome = stayhome;
+        //         let recommend = res.data.recommend;
+        //         recommend.map(ele => {
+        //             ele.sthumb = IMGURL + ele.sthumb;
+        //         });
+        //         this.recommend = recommend;
+        //     }).catch(() => {
+        //     })
+        // },
     },
 }
 </script>

@@ -17,11 +17,11 @@
                                     </p>
                                     <p class="line">
                                         <label for="">收货人：</label>
-                                        <span class="text">景冰川</span>
+                                        <span class="text">孙恒奎</span>
                                     </p>
                                     <p class="line">
                                         <label for="">联系方式：</label>
-                                        <span class="text">184****7522</span>
+                                        <span class="text">182****0451</span>
                                     </p>
                                     <p class="line">
                                         <label for="">收货地址：</label>
@@ -41,7 +41,7 @@
                         <div class="packageList">
                             <div class="info">
                                 <span class="seqNo">包裹1</span>
-                                <span class="postTimeDesc">19:40前完成支付, 预计(明天)10月23日送达</span>
+                                <span class="postTimeDesc">19:40前完成支付, 预计(明天)送达</span>
                             </div>
                             <div class="m-table">
                                 <div class="theadBg"></div>
@@ -59,24 +59,24 @@
                                         <tr>
                                             <td>
                                                 <div class="imgWrap">
-                                                    <img  src="https://yanxuan-item.nosdn.127.net/9b2a8ee4cb222d7ddd5885e57ce2dfe3.png?imageView&quality=95&thumbnail=100x100" alt="">
+                                                    <img  :src="data.img" alt="">
                                                 </div>
                                                 <div class="infoWrap">
-                                                    <div class="name">女式加厚圆领坑条100%山羊绒衫2.0</div>
-                                                    <div class="type">天空蓝2.0 XL（175/92A）≈395g </div>
+                                                    <div class="name">{{data.name}}</div>
+                                                    <div class="type">{{data.cm.text}} </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="tdWrap priceWrap">¥899.00</p>
+                                                <p class="tdWrap priceWrap">¥{{data.price}}</p>
                                             </td>
                                             <td>
-                                                <p class="tdWrap numberWarp">1</p>
+                                                <p class="tdWrap numberWarp">{{data.num}}</p>
                                             </td>
                                             <td>
-                                                <p class="tdWrap">¥899.00</p>
+                                                <p class="tdWrap">¥{{data.price*data.num}}</p>
                                             </td>
                                             <td>
-                                                <p class="tdWrap">¥719.20</p>
+                                                <p class="tdWrap">¥{{data.price*data.num}}</p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -105,27 +105,27 @@
                                         <div class="payItemsInfo">
                                             <div class="line1">
                                                 <label for="">商品合计:</label>
-                                                <span class="data">¥899.00</span>
+                                                <span class="data">¥{{data.price*data.num}}</span>
                                             </div>
                                             <div class="line1">
                                                 <label for="">运费:</label>
                                                 <span class="data">¥0.00</span>
                                             </div>
-                                            <div class="line1">
-                                                <label for="">活动优惠:</label>
-                                                <span class="data">-¥179.80</span>
-                                            </div>
+<!--                                            <div class="line1">-->
+<!--                                                <label for="">活动优惠:</label>-->
+<!--                                                <span class="data">-¥179.80</span>-->
+<!--                                            </div>-->
                                             <div class="line4">
                                                 <label for="">应付总额:</label>
-                                                <span class="data">¥719.20</span>
+                                                <span class="data">¥{{data.price*data.num}}</span>
                                             </div>
                                             <div class="line5">
                                                 <button class="submint">去付款</button>
                                             </div>
                                             <div class="line6">
                                                 <p>
-                                                    <span>景冰川</span>    
-                                                    <span>184****7522</span>
+                                                    <span>孙恒奎</span>
+                                                    <span>182****0451</span>
                                                 </p>  
                                                 <p class="address">山西省太原市小店区平阳路街道小区</p> 
                                             </div>
@@ -189,10 +189,12 @@ export default{
     data(){
         return{
             changeInit:0,
+            data:""
         }
     },
     created(){
-        
+
+
     },
     methods:{
         showForm(name){
@@ -200,7 +202,17 @@ export default{
         },
         calse(name){
             this.$refs[name].close()
+        },
+        initOrder(){
+            let { sid,price,cm,img,num,name}=this.$route.query;
+            this.data={sid,price,cm:cm,img,num,name}
+
         }
+
+    },
+    mounted() {
+        console.log(this.$route.query)
+        this.initOrder()
     }
 }
 </script>
