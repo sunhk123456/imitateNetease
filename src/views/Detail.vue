@@ -184,6 +184,7 @@ import MyFooter from "@/components/MyFooter/MyFooter.vue";
 import bootPage from '@/components/BootPage/BootPage.vue';
 import {apiRead, apiCollection} from "@/http/api"
 import {getDetail} from '@/http/detail'
+import { message } from 'ant-design-vue';
 
 export default{
   components: {  MyHeader,  MyFooter ,bootPage}, //Recom,
@@ -225,6 +226,8 @@ export default{
     mounted(){
         console.log(  "22222",     this.$route.query.sid)
         this.getDetail();
+
+        // this.$store.dispatch('settoken',"123123")
 
     },
     methods:{
@@ -276,26 +279,29 @@ export default{
         //提交订单
         handleOrders() {
             let token=this.$store.state.token;
+
             let sid =this.$route.query.sid;
-            let query={
-                sid,price:this.price,cm:this.cms[this.cmInit],img:this.imgs[this.imgInit],num:this.number,name:this.name
-            }
-            this.$router.push({path:'Order',query:query});
-            // console.log(sid);
+
             // let query={
-            //     redirect:'Details',
-            //     sid:sid
-            // };
-            // if (!token){
-            //     Toast("请登录");
-            //     this.$router.push({name:'Login',query:query});
-            // }else {
-            //
-            //     let query={
-            //         sid,price:this.price,cms:this.cms,cmsIndex:this.cmsIndex,imgs:this.imgs,imgsIndex:this.imgsIndex,num:this.number
-            //     }
-            //     this.$router.push({name:'Order',query:query});
+            //     sid,price:this.price,cm:this.cms[this.cmInit],img:this.imgs[this.imgInit],num:this.number,name:this.name
             // }
+            // this.$router.push({path:'Order',query:query});
+            console.log(sid);
+            let query={
+                redirect:'detail',
+                sid:sid
+            };
+            if (!token){
+
+                // debugger
+                this.$router.push({path:'Login',query:query});
+            }else {
+
+                let query={
+                    sid,price:this.price,cm:this.cms[this.cmInit],img:this.imgs[this.imgInit],num:this.number,name:this.name
+                }
+                this.$router.push({path:'Order',query});
+            }
 
         }
         ,

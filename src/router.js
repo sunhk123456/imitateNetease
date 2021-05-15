@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import User from  './views/User.vue';
 import Login from  './views/Login.vue';
+import Register from  './views/Register.vue';
 import MsgCenter from  './views/MsgCenter';
 import Search from  './views/Search';
 import Detail from  './views/Detail';
@@ -25,6 +26,7 @@ export default new Router({
     { path: '/', name: 'home', component: Home},
     { path: '/user', name: 'user', component: User},
     { path: '/login', name: 'login', component: Login  },
+    { path: '/register', name: 'register', component: Register  },
     { path: '/msgCenter', name: 'msgCenter', component:MsgCenter  },
     { path: '/search', name: 'search', component:Search  },
     { path: '/detail', name: 'detail', component:Detail  },

@@ -24,7 +24,7 @@
               <router-link to="/" class="topLevel">首页</router-link>
             </li>
             <li class="tabNav-item" :class="index == tabNav.length-1 ? 'last' :''" v-for="(item,index) in tabNav" :key='index' >
-              <router-link :to="'/categoryList?id='" class="topLevel" >{{item.text}}</router-link>
+              <router-link :to="'/categoryList?id='+item.url" class="topLevel" >{{item.text}}</router-link>
                 <div class="tabNav-dropdown"  >
                   <ul class="cateGroupList">
                     <div class="cateGroup" v-for="(itema,indexa) in item.navList" :key='indexa'>
@@ -83,7 +83,7 @@ export default {
       isShowInfo:true,
       searchValue:'热卖 儿童漆',
       tabNav:[
-        {text:'我要产品',url:''
+        {text:'我要产品',url:'0'
           ,navList:[
             {title:'明星产品',list:[
               {text:'明星产品',url:'',img:'http://localhost:9004/img/我要产品/明星产品.png',},
@@ -114,7 +114,7 @@ export default {
 
           ]
         },
-        {text:'建筑涂料',url:''
+        {text:'建筑涂料',url:'1'
           ,navList:[
             {title:'厨卫底材',list:[
                 {text:'厨卫底材',url:'',img:'http://localhost:9004/img/建筑涂料/厨卫底材.jpg',},

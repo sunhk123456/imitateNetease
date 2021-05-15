@@ -22,12 +22,13 @@
           <div class="siteNav-r">
             <div class="siteNavItem">
               <div class="siteNavItemHd">
-                <a href="javascript:void(0)" class="siteNavItem" @click="handleLogin">登录</a>
+                <a v-if="!name" href="javascript:void(0)" class="siteNavItem" @click="handleLogin">登录</a>
+               <span v-else ><a href="javascript:void(0)" style="float: left">用户名:{{name}}</a>  <a  href="javascript:void(0)" class="siteNavItem" @click="quitLogin">退出登录</a></span>
               </div>
             </div>
             <div class="siteNavItem" v-for="(item,index) in siteNavList" :key="index">
               <div class="siteNavItemHd pipe">
-                <a :href="item.url">{{item.text}}</a>
+                <a  @click="jumpa(item.url)">{{item.text}}</a>
                 <i v-if="item.more" class="icon icon-down_s"></i>
               </div>
               <div class="siteNavItemBd" v-if="item.more">
@@ -82,8 +83,9 @@ export default {
   data(){
     return{
       isShowTitle:this.headType,
+      name:null,
       siteNavList :[
-        {text:'我的订单',url:'/login'},
+        {text:'我的订单',url:'/user'},
         {text:'会员',url:'/user'},
         {text:'甄选家',url:''},
         {text:'企业采购',url:'',
@@ -105,18 +107,39 @@ export default {
     }
   },
   created(){
-    
+    this.judgeLogin();
+
   },
   mounted(){
   },
   methods:{
+    //判断是否登录
+    judgeLogin(){
+      const name=this.$store.state.name
+      if (name){
+        console.log("name",name)
+        this.name=name;
+      }
+    },
+    jumpa(item){
+      this.$router.push(item)
+
+    },
+
     // 显示login
     handleLogin(){
-      this.$refs.login.open()
+      // this.$refs.login.open()
+      this.$router.push('/login')
     },
     // 隐藏 login
     closeLogin(){
-      this.$refs.login.close()
+      // this.$refs.login.close()
+    },
+    quitLogin(){
+
+      this.$router.push('/login')
+
+      this.$store.dispatch("setQuit");
     }
   },
 }

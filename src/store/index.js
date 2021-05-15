@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     state: {
         count: 10,
         city: "beijin",
+        name:null,
         indexSearch: {
             province: "山西",
             address: "",
@@ -67,6 +68,9 @@ const store = new Vuex.Store({
         settoken(state, payload) {
             state.token = payload;
         },
+        setName(state, payload) {
+            state.name = payload;
+        },
         setcollection(state, payload) {
             state.collection = payload.split(',').map(ele => ele * 1);
         },
@@ -79,9 +83,19 @@ const store = new Vuex.Store({
                 state.collection.push(data);
             }
         },
+        setQuitLogin(state){
+            state.name = null;
+            state.token = null;
+
+        }
     },
     //actions 异步的方法 提交mutations
     actions: {
+        setQuit(context){
+            context.commit('setQuitLogin');
+
+
+        },
         add(context) {
             setTimeout(() => {
                 context.commit("increment")
@@ -97,16 +111,25 @@ const store = new Vuex.Store({
                 sid:sid
             }
             delete paylod.redirect;
-            delete paylod.sid;
+            // delete paylod.sid;
             apiLogin(paylod['values']).then(res => {
-                if (res.code!=200){
-                    this.$message.error("登录失败");
+                console.log(res)
+                if (res.code!==200){
+
+                    // this.$message.error("登录失败");
+                    console.log("登录失败")
+
                 }
                 if (res.token) {
                     commit('settoken', res.token);
-                    res.collection && commit('setcollection', res.collection);
-                    this.$message.success("登录成功");
+                    commit('setName', res.data.uname);
+
+                    // res.collection && commit('setcollection', res.collection);
+                    // this.$message.success("登录成功");
+                    console.log("登录成功")
+                    console.log(redirect)
                     if (redirect) {
+                        console.log(params)
                         router.replace({name: redirect,query:params})
 
                     } else {

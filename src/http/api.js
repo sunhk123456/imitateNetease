@@ -107,6 +107,7 @@ function apiList(params) {
 
 }
 function apiResgist(params) {
+    console.log(params)
     return  new Promise(function (resolve,reject) {
         instance.post('api/user',
             params
@@ -116,6 +117,16 @@ function apiResgist(params) {
             reject(error);
         })
     })
+    // return new Promise((resolve)=>{
+    //
+    //     const resData ={
+    //         "code":"200",
+    //         'data': {
+    //
+    //         },
+    //         "message":"注册成功"};
+    //     resolve(resData)
+    // })
 }
 function apiLogin(params) {
     return  new Promise(function (resolve,reject) {
@@ -127,6 +138,18 @@ function apiLogin(params) {
             reject(error);
         })
     })
+    // return new Promise((resolve)=>{
+    //
+    //     const resData ={
+    //         "code":"200",
+    //         'data': {
+    //             token:"123456123"
+    //
+    //         },
+    //         "message":"成功"};
+    //     resolve(resData)
+    // })
+
 }
 function apiCollection(data) {
     return  new Promise(function (resolve,reject) {

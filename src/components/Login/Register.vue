@@ -4,27 +4,32 @@
         <div class="content">
             <div class="headerWrap">
                 <div class="loginHeader">
-                    <div @click="type = 0" :class="type == 0 ? 'active' :''" class="item mobileLogin">账号登录</div>
+                    <div @click="type = 0" :class="type == 0 ? 'active' :''" class="item mobileLogin">账号注册</div>
                     <!-- <div class="line"></div>
                     <div @click="type = 1" :class="type == 1 ? 'active' :''" class="item mailLogin">邮箱登录</div> -->
                 </div>
                 <div class="loginContent">
+                    <div class="label user" style="margin-bottom: 2px">
+                        <div class="icon1 icon icon-shouji"></div>
+                        <input type="text" @input="input3"  placeholder="注册姓名">
+                        <div v-show="show1" @click="delInfo3" class="icon icon-close_b"></div>
+                    </div>
                     <div class="label user">
                         <div class="icon1 icon icon-shouji"></div>
-                        <input type="text" @input="input1"  placeholder="请输入登录账号">
+                        <input type="text" @input="input1"  placeholder="注册登录账号">
                         <div v-show="show1" @click="delInfo" class="icon icon-close_b"></div>
                     </div>
                     <div class="label pass">
                         <div class="icon1 icon icon-lock"></div>
-                        <input type="password" @input="input2" placeholder="请输入登录密码">
+                        <input type="password" @input="input2" placeholder="注册登录密码">
                         <div v-show="show2" @click="delInfo2" class="icon icon-close_b"></div>
                     </div>
                     <div class="nerror" v-show="isShowErr">
                         <div class="icon icon-jinggao"></div>
                         <div class="ferrorhead">{{errText}}</div>
                     </div>
-                    <button @click="handleLogin" class="loginbtn">登录</button>
                     <button @click="handleRegister" class="loginbtn">注册</button>
+                    <button @click="handleLogin" class="loginbtn">返回登录</button>
                 </div>
             </div>
         </div>
@@ -32,6 +37,8 @@
 </template>
 
 <script>
+    import { message } from 'ant-design-vue';
+    import {apiResgist} from '@/http/api'
 export default{
     props:{
       isShowClosE:{
@@ -46,6 +53,7 @@ export default{
             type:0,
             username:'',
             password:'',
+            name:"",
             show1:false,
             show2:false,
             // err 信息
@@ -66,29 +74,50 @@ export default{
         input2(e){
             this.password = e.target.value
         },
+        input3(e){
+            this.name = e.target.value
+        },
         delInfo2(){
             this.password = '';
+        },
+        delInfo3(){
+            this.name = '';
         },
         close(){
             this.$emit('closeLogin');
         },
         handleLogin(){
-            let redirect=this.$route.query;
-            const values={
-                username:this.username, password:this.password
-            }
-            const params= Object.assign({},redirect,{values});
-
-
-            this.$store.dispatch("headleLogin",params);
-
-            if(this.username == '' || this.password == ''){
-                this.errText = '账号或密码有误，请正确输入！'
-                this.isShowErr = true
-            }
+            this.$router.push('/login')
         },
         handleRegister(){
-            this.$router.push('/register')
+
+            if(this.username == '' || this.password == ''|| this.name == ''){
+                this.errText = '请全输入'
+                this.isShowErr = true
+            }else {
+                let redirect=this.$route.query;
+                const values={
+                    username:this.username, password:this.password,name:this.name
+                }
+                const params= Object.assign({},redirect,{values});
+
+
+                // this.$store.dispatch("headleRigister",params);
+                apiResgist(values).then(res=>{
+                    console.log(res);
+                    if (res.code==200){
+                        alert("注册成功请登录")
+
+                        this.$router.push({path:'Login'})
+                        // message.success("注册成功请登录")
+                    }else {
+
+                    }
+                }).catch(()=>{
+                    alert("用户名重复")
+
+                })
+            }
         }
     }
 }
