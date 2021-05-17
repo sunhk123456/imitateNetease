@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router.js';
 import store from './store';
 import Antd from 'ant-design-vue';
-// import 'ant-design-vue/dist/antd.css';
 import NoData from "./components/NoData/NoData.vue"
 Vue.component('NoData',NoData)
 

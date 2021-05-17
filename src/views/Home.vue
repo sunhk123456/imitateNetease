@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="manufacturerList">
-          <a href="" class="manufacturers large" :class="index >=2 ? 'small' : ''" v-for="(item,index) in manufacturerList" :key='index'>
+          <router-link   :to="{path:'detail',query:{sid:item.id}}" class="manufacturers large" :class="index >=2 ? 'small' : ''" v-for="(item,index) in manufacturerList" :key='index'>
             <div class="mask"></div>
             <div class="name">
               <span>{{item.name}}</span>
@@ -43,7 +43,7 @@
             <div class="" style="width:100%;height:100%;">
               <img class="img img-noBgPic img-lazyload j-lazyload img-lazyloaded" :src="item.img" alt="item.name">
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
       <!-- 新品 -->

@@ -11,6 +11,8 @@ const store = new Vuex.Store({
         count: 10,
         city: "beijin",
         name:null,
+        uid:null,//用户的id
+
         indexSearch: {
             province: "山西",
             address: "",
@@ -70,6 +72,8 @@ const store = new Vuex.Store({
         },
         setName(state, payload) {
             state.name = payload;
+        }, setUid(state, payload) {
+            state.uid = payload;
         },
         setcollection(state, payload) {
             state.collection = payload.split(',').map(ele => ele * 1);
@@ -86,6 +90,7 @@ const store = new Vuex.Store({
         setQuitLogin(state){
             state.name = null;
             state.token = null;
+            state.uid = null;
 
         }
     },
@@ -123,7 +128,7 @@ const store = new Vuex.Store({
                 if (res.token) {
                     commit('settoken', res.token);
                     commit('setName', res.data.uname);
-
+                    commit('setUid', res.data.uid);
                     // res.collection && commit('setcollection', res.collection);
                     // this.$message.success("登录成功");
                     console.log("登录成功")

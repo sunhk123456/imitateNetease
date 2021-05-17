@@ -3,46 +3,22 @@
     <MyHeader />
       <div class="form">
           <h1 align="center">留言小屋 </h1>
-          <form action="aaa">
-              <lable >
-                  <input type="text">
+          <div class="smart-green"  action="//localhost/api/deal" method="post" >
+              <label><span>留言页面 :</span>
+                  <input id="title" type="text" name="title" value=""  />
+                  <div class="error-msg"></div>
+              </label>
 
-              </lable>
-              <input type="submit" value="提交">
-          </form>
-          <a-form :form="form" @submit="handleSubmit" style="width: 70%;margin-left: 15%">
-              <a-form-item label="紧急程度">
-                  <a-select
-                          v-decorator="[
-          'gender',
-          { rules: [{ required: true, message: 'Please select your emergency degree !' }] },
-        ]"
-                          placeholder="选择你的紧急程度"
-                          @change="handleSelectChange"
-                  >
-                      <a-select-option value="urgency">
-                          紧急
-                      </a-select-option>
-                      <a-select-option value="medium">
-                          中等
-                      </a-select-option>
-                      <a-select-option value="noUrgency">
-                          不紧急
-                      </a-select-option>
-                  </a-select>
-              </a-form-item>
-              <a-form-item label="留言信息">
-                  <a-input
-                          v-decorator="['note', { rules: [{ required: true, message: 'Please input your note!' }] }]"
-                  />
-              </a-form-item>
+              <label><span>留言模块 :</span>
+                  <input id="model" type="text"  name="model"   value="" />
+                  <div class="error-msg"></div></label>
+              <label><span>留言描述 :</span>
+                  <textarea id="description" name="description"  value=""   ></textarea>
+                  <div class="error-msg"></div> &nbsp; &nbsp; </label>
+              <div class="success-msg"></div>
+              <label><span>&nbsp;</span><button @click="submits"  class="button"   >确定</button></label>
+          </div>
 
-              <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-                  <a-button type="primary" html-type="submit">
-                      Submit
-                  </a-button>
-              </a-form-item>
-          </a-form>
       </div>
 
 
@@ -53,8 +29,8 @@
 <script>
 import MyHeader from "@/components/MyHeader/MyHeader.vue";
 import MyFooter from "@/components/MyFooter/MyFooter.vue";
-import {getCategoryList} from '@/http/categoryList';
-import { Form } from 'ant-design-vue';
+import {setLeaveMessage} from '@/http/leaveMessage';
+
 export default{
   components: {  MyHeader, MyFooter },
     name:"categoryList",
@@ -65,39 +41,127 @@ export default{
         }
     },
     created(){
-        this.getCategoryList();
-
+        // this.getCategoryList();
+        console.log(        this.$store.state.uid)
+        if ( !this.$store.state.uid)
+        {
+            alert("请登录")
+            this.$router.push('/login')
+        }
     },
     methods:{
-        getCategoryList(){
 
-            const id=this.$route.query.id;
-            getCategoryList(id).then(res => {
-                if (res.data) {
-                    console.log(res)
-                    this.manufacturerList=res.data.manufacturerList;
+
+        submits(){
+            const model = document.getElementById("model").value;
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            const uid=this.$store.state.uid;
+            if (!(model&&title&&description)){
+                alert("需要全都填入数据")
+            }else {
+                const params={
+                    title,model,uid,description
                 }
-            })
-        },
-        handleSubmit(e) {
-            e.preventDefault();
-            this.form.validateFields((err, values) => {
-                if (!err) {
-                    console.log('Received values of form: ', values);
-                }
-            });
-        },
-        handleSelectChange(value) {
-            console.log(value);
-            // this.form.setFieldsValue({
-            //     note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`,
-            // });
-        },
+                console.log(params)
+                setLeaveMessage(params).then(res => {
+                    if (res.code==200){
+                        this.$router.push('/myMessage');
+                    }else{
+                        alert("导入失败")
+                    }
+
+                })
+            }
+
+        }
     },
 }
 </script>
 
 <style lang="scss" scoped>
+    .smart-green {
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+        margin-left: 500px;
+        max-width: 500px;
+        /*background: #F8F8F8;*/
+        padding: 30px 30px 20px 30px;
+        font: 12px Arial, Helvetica, sans-serif;
+        color: #666;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+    }
+    .smart-green h1 {
+        font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+        padding: 20px 0px 20px 40px;
+        display: block;
+        margin: -30px -30px 10px -30px;
+        color: #FFF;
+        background: #9DC45F;
+        text-shadow: 1px 1px 1px #949494;
+        border-radius: 5px 5px 0px 0px;
+        -webkit-border-radius: 5px 5px 0px 0px;
+        -moz-border-radius: 5px 5px 0px 0px;
+         border-bottom: 1px solid #89AF4C;
+    }
+    .smart-green h1 > span {
+         display: block;
+         font-size: 11px;
+        color: #FFF;
+    }
+    .smart-green label {
+        display: block;
+        margin: 0px 0px 5px;
+    }
+    .smart-green label > span {
+        float: left;
+        margin-top: 10px;
+        color: #5E5E5E;
+    }
+    .smart-green input[type="text"], .smart-green input[type="email"],
+    .smart-green textarea, .smart-green select {
+        color: #555;
+        height: 30px;
+        line-height: 15px;
+        width: 100%;
+        padding: 0px 0px 0px 10px;
+        margin-top: 2px;
+        border: 1px solid #E5E5E5;
+        background: #FBFBFB;
+        outline: 0;
+        -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+        box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+        font: normal 14px/14px Arial, Helvetica, sans-serif;
+    }
+    .smart-green textarea {
+        height: 100px;
+        padding-top: 10px;
+    }
+    .smart-green .button {
+        background-color: #9DC45F;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-border-radius: 5px;
+        border: none;
+        padding: 10px 25px 10px 25px;
+        color: #FFF;
+        text-shadow: 1px 1px 1px #949494;
+    }
+    .smart-green .button:hover {
+        background-color: #80A24A;
+    }
+    .error-msg{
+        color: red;
+        margin-top: 10px;
+    }
+    .success-msg{
+        color: #80A24A;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
   .form{
       padding: 20px;
   }

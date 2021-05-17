@@ -96,7 +96,7 @@ export default {
           ]
         },
         {text:'我要留言',url:'/leaveMessage'},
-        {text:'我的留言信息',url:'/leaveMessage'},
+        {text:'我的留言信息',url:'/myMessage'},
       ]
     }
   },
