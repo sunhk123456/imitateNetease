@@ -99,7 +99,7 @@ export default{
     .loginFormWrap{
         top: 81.5px;
         display: block;
-        width: 380px;
+        width: 480px;
         overflow: visible;
         margin: 0 auto;
         height: 300px;
@@ -154,12 +154,12 @@ export default{
                 }
                 .loginContent{
                     padding: 68px 40px 83px;
-                    width: 300px;
+                    width: 400px;
                     margin: 0 auto;
                     background-color: #fff;
                     margin: 20px 0 0;
                     .label{
-                        width: 300px;
+                        width: 400px;
                         height: 38px;
                         box-sizing: border-box;
                         display: flex;

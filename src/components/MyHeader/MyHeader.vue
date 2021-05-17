@@ -95,14 +95,8 @@ export default {
             {text:'联系我们',url:''},
           ]
         },
-        {text:'客户服务',url:'',
-          more:[
-            {text:'在线客服',url:''},
-            {text:'帮助中心',url:''},
-            {text:'商务合作',url:''},
-            {text:'开放平台',url:''},
-          ]
-        },
+        {text:'我要留言',url:'/leaveMessage'},
+        {text:'我的留言信息',url:'/leaveMessage'},
       ]
     }
   },

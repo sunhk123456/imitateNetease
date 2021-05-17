@@ -12,6 +12,7 @@ import Order from  './views/Order';
 import Address from  './views/Address';
 import Cart from  './views/Cart';
 import CategoryList from  './views/CategoryList';
+import LeaveMessage from  './views/LeaveMessage';
 import UserCollection from  './views/UserCollection';
 import UserOrder from  './views/UserOrder';
 import Demo from  './views/Demo';
@@ -34,6 +35,7 @@ export default new Router({
     { path: '/address', name: 'address', component:Address  },
     { path: '/cart', name: 'cart', component:Cart},
     { path: '/categoryList', name: 'categoryList', component:CategoryList},
+    { path: '/LeaveMessage', name: 'LeaveMessage', component:LeaveMessage},
     { path: '/userCollection', name: 'userCollection', component:UserCollection},
     { path: '/userOrder', name: 'userOdder', component:UserOrder},
     { path: '/demo', name: 'demo', component:Demo},

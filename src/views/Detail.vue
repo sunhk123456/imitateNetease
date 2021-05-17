@@ -224,7 +224,7 @@ export default{
     created(){
     },
     mounted(){
-        console.log(  "22222",     this.$route.query.sid)
+        // console.log(  "22222",     this.$route.query.sid)
         this.getDetail();
 
         // this.$store.dispatch('settoken',"123123")
@@ -233,18 +233,22 @@ export default{
     methods:{
       //获取细节数据
         getDetail(){
-            getDetail().then(res => {
+
+            getDetail(this.$route.query.sid).then(res => {
                 if (res.data) {
+
                     console.log(res)
+                    console.log(res.data.detailNavTab)
                     this.name=res.data.name
                     this.price=res.data.price
-                    this.imgs=res.data.imgs
+                    this.imgs=res.data.imgs&&res.data.imgs.map(ele=>ele.img)
                     this.colors=res.data.colors
                     this.cms=res.data.cms
-                    this.detailNavTab=res.data.detailNavTab
-                    this.desc=res.data.desc
+                    this.detailNavTab=res.data.detailNavTab&&res.data.detailNavTab.map(ele=>ele.text)
+                    this.desc=res.data.desc&&res.data.desc.map(ele=>ele.img)
                     this.comments=res.data.comments
                     this.userCommons=res.data.userCommons
+                    console.log("res.data.imgs",res.data.imgs)
                 }
             })
         },

@@ -31,8 +31,6 @@ function getSwipetInfo(data){
               {id:0,name:'厨卫底材',type:'新品尝鲜',price:'15.8',img:'http://localhost:9004/img/我要产品/厨卫底材.jpg'},
               {id:0,name:'基础材料',type:'新品尝鲜',price:'15.8',img:'http://localhost:9004/img/我要产品/基础材料.jpg'},
               {id:0,name:'外墙乳胶漆',type:'新品尝鲜',price:'15.8',img:'http://localhost:9004/img/我要产品/外墙乳胶漆.jpg'},
-
-              // {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/c097be14110f769d58245cdad73e15c3.png?&quality=95&type=webp&imageView'},
           ]
       },
           "message":"保存成功"};
