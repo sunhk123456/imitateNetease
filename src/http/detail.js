@@ -19,19 +19,19 @@ function getDetail(sid){
     //             name:"立邦铜离子儿童漆",
     //             price:"99",
     //             imgs:[
-    //                 'http://localhost:9004/img/homeManu/儿童漆.jpg',
-    //                 'http://localhost:9004/img/homeManu/儿童漆2.jpg',
-    //                 'http://localhost:9004/img/homeManu/儿童漆3.jpg',
-    //                 'http://localhost:9004/img/homeManu/儿童漆4.jpg',
-    //                 'http://localhost:9004/img/homeManu/儿童漆5.jpg',
+    //                 'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg',
+    //                 'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆2.jpg',
+    //                 'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆3.jpg',
+    //                 'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆4.jpg',
+    //                 'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆5.jpg',
     //             ],
     //             // 颜色
     //             // colorInit:0,
     //             colors:[
-    //                 {id:0,img:'http://localhost:9004/img/homeManu/儿童漆.jpg',},
-    //                 {id:1,img:'http://localhost:9004/img/homeManu/儿童漆.jpg',},
-    //                 {id:2,img:'http://localhost:9004/img/homeManu/儿童漆.jpg',},
-    //                 {id:3,img:'http://localhost:9004/img/homeManu/儿童漆.jpg',},
+    //                 {id:0,img:'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg',},
+    //                 {id:1,img:'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg',},
+    //                 {id:2,img:'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg',},
+    //                 {id:3,img:'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg',},
     //             ],
     //             // 尺码
     //             // cmInit:0,
@@ -48,7 +48,7 @@ function getDetail(sid){
     //                 '详情','评价（100）',
     //             ],
     //             desc:[
-    //                 'http://localhost:9004/img/儿童漆详情.jpg',
+    //                 'http://localhost/oilPaint/public/assets/img/儿童漆详情.jpg',
     //             ],
     //
     //             comments:[

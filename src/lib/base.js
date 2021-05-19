@@ -1,5 +1,5 @@
 const  URL='http://localhost/oilpaint/public/';
-const IMGURL='http://localhost:9004/'
+const IMGURL='http://localhost/oilPaint/public/assets/'
 
 const SUCCESS=200;
 const FAIL=404;

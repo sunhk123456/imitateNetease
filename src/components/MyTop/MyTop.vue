@@ -86,29 +86,29 @@ export default {
         {text:'我要产品',url:'0'
           ,navList:[
             {title:'明星产品',list:[
-              {text:'明星产品',url:'',img:'http://localhost:9004/img/我要产品/明星产品.png',},
-              {text:'植萃系列',url:'',img:'http://localhost:9004/img/我要产品/明星产品/植萃系列.png',},
-              {text:'立邦儿童漆',url:'',img:'http://localhost:9004/img/我要产品/明星产品/立邦儿童漆.png',},
-              {text:'立邦儿童漆水性木器漆',url:'',img:'http://localhost:9004/img/我要产品/明星产品/立邦儿童漆水性木器漆.png',},
+              {text:'明星产品',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/明星产品.png',},
+              {text:'植萃系列',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/明星产品/植萃系列.png',},
+              {text:'立邦儿童漆',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/明星产品/立邦儿童漆.png',},
+              {text:'立邦儿童漆水性木器漆',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/明星产品/立邦儿童漆水性木器漆.png',},
             ]},
             {title:'厨卫底材',list:[
-                {text:'厨卫底材',url:'',img:'http://localhost:9004/img/我要产品/厨卫底材.jpg',},
+                {text:'厨卫底材',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/厨卫底材.jpg',},
 
               ]},
             {title:'内墙乳胶漆',list:[
-                {text:'内墙乳胶漆',url:'',img:'http://localhost:9004/img/我要产品/内墙乳胶漆.jpg',},
+                {text:'内墙乳胶漆',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/内墙乳胶漆.jpg',},
 
               ]},
             {title:'基础材料',list:[
-                {text:'基础材料',url:'',img:'http://localhost:9004/img/我要产品/基础材料.jpg',},
+                {text:'基础材料',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/基础材料.jpg',},
 
               ]},
             {title:'外墙乳胶漆',list:[
-                {text:'外墙乳胶漆',url:'',img:'http://localhost:9004/img/我要产品/外墙乳胶漆.jpg',},
+                {text:'外墙乳胶漆',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/外墙乳胶漆.jpg',},
 
               ]},
             {title:'木器漆',list:[
-                {text:'木器漆',url:'',img:'http://localhost:9004/img/我要产品/木器漆.jpg',},
+                {text:'木器漆',url:'',img:'http://localhost/oilPaint/public/assets/img/我要产品/木器漆.jpg',},
 
               ]},
 
@@ -117,19 +117,19 @@ export default {
         {text:'建筑涂料',url:'1'
           ,navList:[
             {title:'厨卫底材',list:[
-                {text:'厨卫底材',url:'',img:'http://localhost:9004/img/建筑涂料/厨卫底材.jpg',},
+                {text:'厨卫底材',url:'',img:'http://localhost/oilPaint/public/assets/img/建筑涂料/厨卫底材.jpg',},
 
               ]},
             {title:'工业涂料',list:[
-                {text:'工业涂料',url:'',img:'http://localhost:9004/img/建筑涂料/工业涂料.jpg',},
+                {text:'工业涂料',url:'',img:'http://localhost/oilPaint/public/assets/img/建筑涂料/工业涂料.jpg',},
 
               ]},
             {title:'装饰涂料',list:[
-                {text:'装饰涂料',url:'',img:'http://localhost:9004/img/建筑涂料/装饰涂料.jpg',},
+                {text:'装饰涂料',url:'',img:'http://localhost/oilPaint/public/assets/img/建筑涂料/装饰涂料.jpg',},
 
               ]},
             {title:'辅材',list:[
-                {text:'辅材',url:'/user',img:'http://localhost:9004/img/建筑涂料/辅材.jpg',},
+                {text:'辅材',url:'/user',img:'http://localhost/oilPaint/public/assets/img/建筑涂料/辅材.jpg',},
 
               ]},
 

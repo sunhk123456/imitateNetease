@@ -12,9 +12,9 @@
               <div class="itemList">
                 <div class="newProduct product " v-for="(item,index) in itema.list" :key='index'>
                     <div class="hd">
-                    <router-link  :to="'/detail?id='+item.id" class="imgWrap">
+                    <router-link  :to="'/detail?sid='+item.id" class="imgWrap">
                         <div style="width:100%;height:100%;">
-                            <img class="img  img-lazyload img-lazyloaded" src="https://yanxuan-item.nosdn.127.net/ef68b8e6c017ec145e14c10804337f91.png?type=webp&quality=95&thumbnail=265x265&imageView" alt="">
+                            <img class="img  img-lazyload img-lazyloaded" :src="item.img" alt="">
                         </div>
                     </router-link>
                     </div>
@@ -24,7 +24,7 @@
                     </div>
                     <h4 class="name">
                         <a href="">
-                        <span>冻干卤肉饭 微波版 200克</span>
+                        <span>{{item.name}}</span>
                         </a>
                     </h4>
                     <p class="price">

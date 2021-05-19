@@ -16,16 +16,16 @@ function getCategoryList(data){
             data:{
                 manufacturerList:[
                     {title:'秋季美食',list:[
-                            {id:0,name:'海外制造商',type:'新品',price:'9.9元起',img:'https://yanxuan.nosdn.127.net/74e2ea8f81004d0a60f90fc8e4649058.png?&quality=95&type=webp&imageView'},
-                            {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/c097be14110f769d58245cdad73e15c3.png?&quality=95&type=webp&imageView'},
-                            {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/2ef40536e86eba997dc17cab62697a44.png?&quality=95&type=webp&imageView'},
-                            {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/2ef40536e86eba997dc17cab62697a44.png?&quality=95&type=webp&imageView'},
+                            {id:1,name:'儿童漆',type:'新品',price:'9.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg'},
+                            {id:23,name:'刷新服务',type:'',price:'29.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/刷新服务.jpg'},
+                            {id:24,name:'原生植萃系列',type:'',price:'29.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/原生植萃系列.jpg'},
+                            {id:25,name:'厨房底材',type:'',price:'29.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/厨房底材.jpg'},
                         ]},
                     {title:'新品首发',list:[
-                            {id:0,name:'海外制造商',type:'新品',price:'9.9元起',img:'https://yanxuan.nosdn.127.net/74e2ea8f81004d0a60f90fc8e4649058.png?&quality=95&type=webp&imageView'},
-                            {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/c097be14110f769d58245cdad73e15c3.png?&quality=95&type=webp&imageView'},
-                            {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/2ef40536e86eba997dc17cab62697a44.png?&quality=95&type=webp&imageView'},
-                            {id:0,name:'CK制造商',type:'',price:'29.9元起',img:'https://yanxuan.nosdn.127.net/2ef40536e86eba997dc17cab62697a44.png?&quality=95&type=webp&imageView'},
+                            {id:1,name:'海外制造商',type:'新品',price:'9.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/儿童漆.jpg'},
+                            {id:23,name:'CK制造商',type:'',price:'29.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/刷新服务.jpg'},
+                            {id:24,name:'CK制造商',type:'',price:'29.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/原生植萃系列.jpg'},
+                            {id:25,name:'CK制造商',type:'',price:'29.9元起',img:'http://localhost/oilPaint/public/assets/img/homeManu/厨房底材.jpg'},
                         ]},
 
                 ]
